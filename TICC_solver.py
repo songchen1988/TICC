@@ -404,3 +404,12 @@ class TICC:
         clustered_points = updateClusters(lle_all_points_clusters, switch_penalty=self.switch_penalty)
 
         return(clustered_points)
+
+        def stack_window_data(self, data_windows):
+            l = []
+
+            for w in data_windows:
+                window = [val for sub in w for val in sub]
+                l.append(window)
+
+            return np.array(l)
