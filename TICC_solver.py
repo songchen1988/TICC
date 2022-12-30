@@ -47,7 +47,7 @@ class TICC:
         np.set_printoptions(formatter={'float': lambda x: "{0:0.4f}".format(x)})
         np.random.seed(102)
 
-    def fit(self, input_file):
+    def fit(self, X):
         """
         Main method for TICC solver.
         Parameters:
@@ -57,7 +57,10 @@ class TICC:
         self.log_parameters()
 
         # Get data into proper format
-        times_series_arr, time_series_rows_size, time_series_col_size = self.load_data(input_file)
+        #times_series_arr, time_series_rows_size, time_series_col_size = self.load_data(input_file)
+        times_series_arr = X
+        time_series_rows_size = X.shape[0]
+        time_series_col_size = X.shape[1]
 
         ############
         # The basic folder to be created
@@ -169,7 +172,7 @@ class TICC:
             for cluster_num in range(self.number_of_clusters):
                 print("length of cluster #", cluster_num, "-------->", sum([x == cluster_num for x in clustered_points]))
 
-            self.write_plot(clustered_points, str_NULL, training_indices)
+            #self.write_plot(clustered_points, str_NULL, training_indices)
 
             # TEST SETS STUFF
             # LLE + swtiching_penalty
