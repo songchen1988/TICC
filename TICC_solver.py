@@ -60,7 +60,10 @@ class TICC:
         #times_series_arr, time_series_rows_size, time_series_col_size = self.load_data(input_file)
         times_series_arr = X
         time_series_rows_size = X.shape[0]
-        time_series_col_size = X.shape[1]
+        if X.ndim == 1:
+            time_series_col_size = 1
+        else:
+            time_series_col_size = X.shape[1]
 
         ############
         # The basic folder to be created
