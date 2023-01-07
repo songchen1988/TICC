@@ -66,7 +66,8 @@ class TICC:
 
         ############
         # The basic folder to be created
-        str_NULL = self.prepare_out_directory()
+        if self.write_out_file == True:
+            str_NULL = self.prepare_out_directory()
 
         # Train test split
         training_indices = getTrainTestSplit(time_series_rows_size, self.num_blocks,
